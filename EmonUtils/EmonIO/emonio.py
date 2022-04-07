@@ -5,6 +5,8 @@ import time
 import requests
 
 class EmonIO:
+    """EmonPi handler class used to fetch data using REST API."""
+
     def __init__(self, config_file: str, *, schema_file: str=""):
 
         # Load configuration file
@@ -16,7 +18,7 @@ class EmonIO:
         self.headers =  {"Authorization":f"Bearer {self.credentials}"}
 
         if schema_file:
-            with open(schema_file, "r") as f_in:
+            with open(schema_file, "r", encoding="utf8") as f_in:
                 self.schema = json.load(f_in)
 
     def _test(self):

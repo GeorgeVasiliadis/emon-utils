@@ -14,3 +14,6 @@ When running for the first time, EmonUtils will fire the auto-configuration scri
 > The auto-configuration scripts can be invoked on demand. The functions `from EmonUtils.setup import generate_config, generate_schema` cam be used accordingly.
 
 An other way of configuring EmonUtils is by locating and editing the respective files manually. `from EmonUtils import CONFIG_FILE, SCHEMA_FILE` can be used to examine where those files are stored.
+
+## Important Notes
+- Make sure that the underlying server's clock is configured as desired. In the case of EmonPi, the default time zone might lead to obfuscating bugs.

@@ -41,7 +41,7 @@ def generate_config(CONFIG_FILE):
     if not db_name:
         db_name = "REPLACE_ME"
         print("Database Name cannot be omitted. This will cause trouble!")
-        print(f"Please specify the predefined database")
+        print("Please specify the predefined database")
         print("and replace it in the generated config file.")
         input("Press enter to continue...")
 
@@ -50,7 +50,7 @@ def generate_config(CONFIG_FILE):
     if not document_name:
         document_name = "REPLACE_ME"
         print("Document Name cannot be omitted. This will cause trouble!")
-        print(f"Please specify the predefined document")
+        print("Please specify the predefined document")
         print("and replace it in the generated config file.")
         input("Press enter to continue...")
 
@@ -66,7 +66,7 @@ def generate_config(CONFIG_FILE):
     config["DB"]["username"] = username
     config["DB"]["password"] = password
 
-    with open(CONFIG_FILE, "w") as f_out:
+    with open(CONFIG_FILE, "w", encoding="utf8") as f_out:
         config.write(f_out)
 
     print(f"Config file was successfully generated at: {CONFIG_FILE}")
