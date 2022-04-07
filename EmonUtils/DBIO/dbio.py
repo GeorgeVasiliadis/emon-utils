@@ -126,25 +126,39 @@ class DBIO:
 
         return res.ok
 
+    def test_view(self) -> dict:
+        res = requests.get(f"{self.base_url}/{self.db}/_design/{self.document}/_view/test_view",
+            auth=(self.username, self.password)
+        )
+
+        data = {}
+
+        if res.ok:
+            data = res.json()
+
+        return res.json()
+
 # Test Section
 if __name__ == "__main__":
     CONFIG_FILE = "../data/dev.cfg"
     dbio = DBIO(CONFIG_FILE)
+    #
+    # if dbio._test():
+    #     print("General test: ok")
+    # else:
+    #     print("General test: ko")
+    #
+    # name = dbio.create_document(data={"hello": "world"})
+    # if name:
+    #     ("A random document was created successfully")
+    # else:
+    #     print("Could not create the desired document")
+    #
+    # data = dbio.fetch_document(document=name)
+    #
+    # if data:
+    #     print(data)
+    # else:
+    #     print("Could not fetch data")
 
-    if dbio._test():
-        print("General test: ok")
-    else:
-        print("General test: ko")
-
-    name = dbio.create_document(data={"hello": "world"})
-    if name:
-        ("A random document was created successfully")
-    else:
-        print("Could not create the desired document")
-
-    data = dbio.fetch_document(document=name)
-
-    if data:
-        print(data)
-    else:
-        print("Could not fetch data")
+    data = dbio.test_view()

@@ -1,6 +1,9 @@
 import os
 
-__version__ = "0.2"
+__version__ = "0.3"
+
+from .EmonIO import EmonIO
+from .DBIO import DBIO
 
 PACKAGE_DIR = os.path.dirname(__file__)
 DATA_DIR = os.path.join(PACKAGE_DIR, "data")
